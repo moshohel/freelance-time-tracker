@@ -98,9 +98,4 @@ class TimeLogService implements TimeLogServiceInterface
     {
         return $this->timeLogRepo->getLogsByUser($userId);
     }
-
-    public function getFilteredLogs(array $filters): Collection
-    {
-        return $this->timeLogRepo->getLogsByFilters($filters);
-    }
 }

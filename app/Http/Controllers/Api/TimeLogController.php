@@ -74,21 +74,24 @@ class TimeLogController extends Controller
     public function destroy(int $id): JsonResponse
     {
         try {
-
             $deleted = $this->timeLogService->deleteLog($id);
+            if (!$deleted) {
+                return response()->json(['message' => 'Log not found'], 404);
+            }
+            return response()->json(['message' => 'Log Deleted'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error fetching log: ' . $e->getMessage()], 500);
         }
-        $deleted = $this->timeLogService->deleteLog($id);
-        return $deleted
-            ? response()->json(['message' => 'Deleted'], Response::HTTP_OK)
-            : response()->json(['message' => 'Not found'], Response::HTTP_NOT_FOUND);
     }
 
-    public function start(Request $request): JsonResponse
+    public function start(TimeLogRequest $request): JsonResponse
     {
-        $log = $this->timeLogService->startLog($request->only(['project_id', 'tag']));
-        return response()->json(new TimeLogResource($log), 201);
+        try {
+            $log = $this->timeLogService->startLog($request->only(['project_id', 'tag']));
+            return response()->json(new TimeLogResource($log), 201);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error starting Log:', 'error' => $e->getMessage()], 500);
+        }
     }
 
     public function end(int $id): JsonResponse

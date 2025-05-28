@@ -13,5 +13,4 @@ interface TimeLogServiceInterface
     public function updateLog(int $id, array $data): ?TimeLog;
     public function deleteLog(int $id): bool;
     public function getUserLogs(int $userId): Collection;
-    public function getFilteredLogs(array $filters): Collection;
 }
