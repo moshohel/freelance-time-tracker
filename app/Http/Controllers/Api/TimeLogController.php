@@ -52,7 +52,7 @@ class TimeLogController extends Controller
             if (!$log) {
                 return response()->json(['message' => 'Log not found'], 404);
             }
-            return response()->json(new TimeLogResource($log), Response::HTTP_OK);
+            return response()->json(new TimeLogResource($log), 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error fetching log: ' . $e->getMessage()], 500);
         }
@@ -66,7 +66,7 @@ class TimeLogController extends Controller
                 return response()->json(['message' => 'Log not found'], 404);
             }
             $log = $this->timeLogService->updateLog($id, $request->validated());
-            return response()->json(new TimeLogResource($log), Response::HTTP_OK);
+            return response()->json(new TimeLogResource($log), 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error fetching log: ' . $e->getMessage()], 500);
         }
@@ -98,7 +98,7 @@ class TimeLogController extends Controller
     public function end(int $id): JsonResponse
     {
         try {
-            $log = $this->timeLogService->endLog($id);
+            $log = $this->timeLogService->endLog(Auth::id(), $id);
             if (!$log) {
                 return response()->json(['message' => 'Log not found'], 404);
             }

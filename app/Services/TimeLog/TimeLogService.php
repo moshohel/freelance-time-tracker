@@ -40,19 +40,27 @@ class TimeLogService implements TimeLogServiceInterface
     {
         $log = $this->timeLogRepo->find($logId);
 
-        // Validate ownership
-        if (!$log || $log->user_id !== Auth::id()) {
-            throw new \Exception('Log not found or access denied.');
+        if (!$log) {
+            throw new \Exception('Time log not found.');
         }
 
-        if ($log->end_time) {
-            throw new \Exception('Log is already ended.');
+        if ($log->user_id !== Auth::id()) {
+            throw new \Exception('You are not allowed to end this time log.');
+        }
+
+        if ($log->end_time !== null) {
+            throw new \Exception('This time log has already been ended.');
         }
 
         $log->end_time = now();
-        $log->hours = $log->start_time
-            ? round(Carbon::parse($log->start_time)->floatDiffInHours(now()), 2)
-            : 0;
+
+        if ($log->start_time) {
+            $start = Carbon::parse($log->start_time);
+            $end = Carbon::now();
+            $log->hours = round($start->floatDiffInHours($end), 2);
+        } else {
+            $log->hours = 0;
+        }
 
         return $this->timeLogRepo->update($logId, $log->toArray());
     }
@@ -61,11 +69,12 @@ class TimeLogService implements TimeLogServiceInterface
     {
         $data['user_id'] = Auth::id();
 
-        // Auto-calculate hours if both start and end exist
         if (!empty($data['start_time']) && !empty($data['end_time'])) {
             $start = Carbon::parse($data['start_time']);
             $end = Carbon::parse($data['end_time']);
             $data['hours'] = round($start->floatDiffInHours($end), 2);
+        } else {
+            $data['hours'] = $data['hours'] ?? 0;
         }
 
         return $this->timeLogRepo->create($data);
@@ -75,11 +84,14 @@ class TimeLogService implements TimeLogServiceInterface
     {
         $log = $this->timeLogRepo->find($id);
 
-        if (!$log || $log->user_id !== Auth::id()) {
-            throw new \Exception('Not authorized');
+        if (!$log) {
+            throw new \Exception('Time log not found.');
         }
 
-        // Recalculate hours if times updated
+        if ($log->user_id !== Auth::id()) {
+            throw new \Exception('You cannot update this time log.');
+        }
+
         if (!empty($data['start_time']) && !empty($data['end_time'])) {
             $start = Carbon::parse($data['start_time']);
             $end = Carbon::parse($data['end_time']);
