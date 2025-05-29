@@ -5,6 +5,7 @@ namespace App\Repositories\TimeLog;
 use App\Models\TimeLog;
 use Illuminate\Support\Collection;
 use App\Repositories\TimeLog\TimeLogRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class TimeLogRepository implements TimeLogRepositoryInterface
 {
@@ -49,5 +50,33 @@ class TimeLogRepository implements TimeLogRepositoryInterface
     public function getLogsByUser(int $userId): Collection
     {
         return TimeLog::where('user_id', $userId)->latest()->get();
+    }
+
+    public function getLogsByFilter(array $filters): Collection
+    {
+        $query = TimeLog::query();
+
+        if (isset($filters['user_id'])) {
+            $query->where('user_id', $filters['user_id']);
+        }
+        if (!empty($filters['project_id'])) {
+            $query->where('project_id', $filters['project_id']);
+        }
+        if (!empty($filters['client_id'])) {
+            $query->whereHas('project', function ($q) use ($filters) {
+                $q->where('client_id', $filters['client_id']);
+            });
+        }
+        if (!empty($filters['from'])) {
+            $query->where('start_time', '>=', $filters['from']);
+        }
+        if (!empty($filters['to'])) {
+            $query->where('end_time', '<=', $filters['to']);
+        }
+        if (!empty($filters['tag'])) {
+            $query->where('tag', $filters['tag']);
+        }
+
+        return $query->latest()->get();
     }
 }

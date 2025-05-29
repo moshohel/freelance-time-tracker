@@ -110,4 +110,18 @@ class TimeLogController extends Controller
             return response()->json(['message' => 'Error fetching log: ' . $e->getMessage()], 500);
         }
     }
+
+    public function filter(Request $request): JsonResponse
+    {
+        try {
+            $filters = $request->only(['user_id', 'project_id', 'client_id', 'from', 'to']);
+            $logs = $this->timeLogService->getLogsByFilter($filters);
+            if ($logs->isEmpty()) {
+                return response()->json(['message' => 'No logs found for the given filters'], 404);
+            }
+            return response()->json(TimeLogResource::collection($logs), 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error fetching logs: ' . $e->getMessage()], 500);
+        }
+    }
 }

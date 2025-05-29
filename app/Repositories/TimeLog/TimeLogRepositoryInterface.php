@@ -13,4 +13,5 @@ interface TimeLogRepositoryInterface
     public function find(int $id): ?TimeLog;
     public function getUserActiveLog(int $userId): ?TimeLog;
     public function getLogsByUser(int $userId): Collection;
+    public function getLogsByFilter(array $filters): Collection;
 }

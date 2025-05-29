@@ -24,4 +24,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Start & End logging
     Route::post('/time-logs/start', [TimeLogController::class, 'start']);
     Route::post('/time-logs/{id}/end', [TimeLogController::class, 'end']);
+    // Filter and report logs
+    Route::get('/report', [TimeLogController::class, 'filter']);
 });
