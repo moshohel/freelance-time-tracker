@@ -27,7 +27,7 @@ class TimeLogController extends Controller
         try {
             $logs = $this->timeLogService->getUserLogs(Auth::id());
             if ($logs->isEmpty()) {
-                return response()->json(['message' => 'No logs found'], 404);
+                return response()->json(['message' => 'No logs for this user found'], 404);
             }
             return response()->json(TimeLogResource::collection($logs), 200);
         } catch (\Exception $e) {

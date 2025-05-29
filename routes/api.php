@@ -15,5 +15,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::apiResource('clients', ClientController::class);
     Route::apiResource('projects', ProjectController::class);
-    Route::apiResource('time-logs', TimeLogController::class);
+    Route::get('/time-logs', [TimeLogController::class, 'index']);
+    Route::post('/time-logs', [TimeLogController::class, 'store']);
+    Route::get('/time-logs/{id}', [TimeLogController::class, 'show']);
+    Route::put('/time-logs/{id}', [TimeLogController::class, 'update']);
+    Route::delete('/time-logs/{id}', [TimeLogController::class, 'destroy']);
+
+    // Start & End logging
+    Route::post('/time-logs/start', [TimeLogController::class, 'start']);
+    Route::post('/time-logs/{id}/end', [TimeLogController::class, 'end']);
 });
