@@ -6,6 +6,7 @@ use App\Models\TimeLog;
 use Illuminate\Support\Collection;
 use App\Repositories\TimeLog\TimeLogRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class TimeLogRepository implements TimeLogRepositoryInterface
 {
@@ -54,11 +55,8 @@ class TimeLogRepository implements TimeLogRepositoryInterface
 
     public function getLogsByFilter(array $filters): Collection
     {
-        $query = TimeLog::query();
+        $query = TimeLog::with(['project.client']); // eager load relationships
 
-        if (isset($filters['user_id'])) {
-            $query->where('user_id', $filters['user_id']);
-        }
         if (!empty($filters['project_id'])) {
             $query->where('project_id', $filters['project_id']);
         }
@@ -68,10 +66,11 @@ class TimeLogRepository implements TimeLogRepositoryInterface
             });
         }
         if (!empty($filters['from'])) {
-            $query->where('start_time', '>=', $filters['from']);
+            $query->where('start_time', '>=', Carbon::parse($filters['from']));
         }
         if (!empty($filters['to'])) {
-            $query->where('end_time', '<=', $filters['to']);
+            // addDay ensures full-day inclusion
+            $query->where('end_time', '<', Carbon::parse($filters['to'])->addDay());
         }
         if (!empty($filters['tag'])) {
             $query->where('tag', $filters['tag']);
