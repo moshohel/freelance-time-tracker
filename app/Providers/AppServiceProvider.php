@@ -15,6 +15,7 @@ use App\Services\TimeLog\TimeLogService;
 use App\Services\TimeLog\TimeLogServiceInterface;
 use App\Repositories\TimeLog\TimeLogRepositoryInterface;
 use App\Repositories\TimeLog\TimeLogRepository;
+use App\Providers\RouteServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
         // Register TimeLog services and repositories
         $this->app->bind(TimeLogServiceInterface::class, TimeLogService::class);
         $this->app->bind(TimeLogRepositoryInterface::class, TimeLogRepository::class);
+
+        // Register the RouteServiceProvider
+        $this->app->register(RouteServiceProvider::class);
     }
 
     /**

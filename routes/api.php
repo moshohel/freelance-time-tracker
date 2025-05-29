@@ -7,11 +7,12 @@ use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TimeLogController;
 
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum', 'throttle:api-authenticated')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::apiResource('clients', ClientController::class);
     Route::apiResource('projects', ProjectController::class);
