@@ -26,29 +26,29 @@ A RESTful API built with Laravel 12 for tracking time spent on freelance project
 
 ### 📥 Clone the Repository
 
-1. Clone the repository
+Clone the repository
 
     git clone https://github.com/moshohel/freelance-time-tracker.git
 
-2. Switch to the repo folder
+Switch to the repo folder
 
     cd freelance-time-tracker
 
 📦 Install Dependencies
 
-3. Install all the dependencies using composer
+Install all the dependencies using composer
 
     composer install
 
-4. Copy the example env file and make the required configuration changes in the .env file
+Copy the example env file and make the required configuration changes in the .env file
 
     cp .env.example .env
 
-5. Generate a new application key
+Generate a new application key
 
     php artisan key:generate
 
-6. Edit your .env and update
+Edit your .env and update
 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -57,17 +57,17 @@ A RESTful API built with Laravel 12 for tracking time spent on freelance project
     DB_USERNAME=your_db_user
     DB_PASSWORD=your_db_password
 
-7. Run the database migrations (**Set the database connection in .env before migrating**)
+Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
 
 ## Database seeding
 
-8. Run the database seeder for test Data
+Run the database seeder for test Data
 
     php artisan db:seed
 
-9. Start the local development server
+Start the local development server
 
     php artisan serve
 
