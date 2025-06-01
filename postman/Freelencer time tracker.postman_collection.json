@@ -1,0 +1,940 @@
+{
+	"info": {
+		"_postman_id": "687fbfc5-b1e5-4b86-b374-4ab169d45bf9",
+		"name": "Freelencer time tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8340173"
+	},
+	"item": [
+		{
+			"name": "Client API",
+			"item": [
+				{
+					"name": "All Clients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Client",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jamal Corp\",\r\n  \"email\": \"Jamal@example.com\",\r\n  \"contact_person\": \"Jamal Doe\",\r\n  \"user_id\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Client",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ACME Corp\",\r\n  \"email\": \"acme@example.com\",\r\n  \"contact_person\": \"Jane Doe\",\r\n  \"user_id\": 1\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"user_id\": 14,\r\n    \"name\": \" Rolfson and Bode\",\r\n    \"email\": \"khegmann@roberts.net\",\r\n    \"contact_person\": \"Mariana Goodwin\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/10",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clients/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clients",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project API",
+			"item": [
+				{
+					"name": "All Project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/projects/16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Landing Page Redesign\",\r\n  \"description\": \"Redesign the marketing page\",\r\n  \"client_id\": 6,\r\n  \"status\": \"active\",\r\n  \"deadline\": \"2025-06-15\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"client_id\": 6,\r\n    \"title\": \"Qui vel incidunt.\",\r\n    \"description\": \"Ducimus occaecati eveniet ullam odit rem id. Iure dignissimos ex ad dignissimos. Laborum quia quam culpa nam dolorem eos.\",\r\n    \"status\": \"active\",\r\n    \"deadline\": \"2019-03-08\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/20",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"leo\",\r\n  \"email\": \"leo@example.com\",\r\n  \"password\": \"password\",\r\n  \"password_confirmation\": \"password\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"leo@example.com\",\r\n  \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 1|HZcn82ZuMGwNQOH6U5kws4DL0jTkyVH4JrVZm0p39c73ef14",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TimeLog API",
+			"item": [
+				{
+					"name": "Get all time logs for the authenticated user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creat Time log",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"project_id\": 7,\r\n  \"start_time\": \"2025-07-25T09:00:00\",\r\n  \"end_time\": null,\r\n  \"hours\": 4\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a specific time log by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"project_id\": 1,\r\n  \"start_time\": \"2025-05-24T09:00:00\",\r\n  \"end_time\": \"2025-05-24T12:30:00\",\r\n  \"hours\": 3.5\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs/54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start a new time log",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"project_id\": 6,\r\n    \"hours\": \"4\",\r\n    \"tag\": \"billable\"        \r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs/start",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "End the active time log",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs/58/end",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs",
+								"58",
+								"end"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create manual time log entry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"project_id\": 6,\r\n  \"start_time\": \"2025-05-24T08:00:00\",\r\n  \"end_time\": \"2025-05-24T10:30:00\",\r\n  \"description\": \"Manual logging\",\r\n  \"tag\": \"non-billable\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a time log (manual edit)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \r\n    \"user_id\": 1,\r\n    \"project_id\": 6,\r\n    \"tag\": \"billable\"  \r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs/60",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs",
+								"60"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Time log",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 3|CYNudxMAu3SeV1XqiqH82jtq4gFDnrLRnyzVMO5db11d7609",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"start_time\": \"2025-05-23T09:00:00\",\r\n  \"end_time\": \"2025-05-24T11:15:00\",\r\n  \"tag\": \"non-billable\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/time-logs/54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"time-logs",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter time logs for report (total hours per day/project/client)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 2|hPBjRql7N5KAGdQ5zcoeAaksOZR5sgFkaRlf3JYnd00f19c7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/report?from=2020-05-20&to=2026-05-24&project_id=6&client_id=6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"report"
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "53",
+									"disabled": true
+								},
+								{
+									"key": "tag",
+									"value": "billable",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "2020-05-20"
+								},
+								{
+									"key": "to",
+									"value": "2026-05-24"
+								},
+								{
+									"key": "project_id",
+									"value": "6"
+								},
+								{
+									"key": "client_id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
