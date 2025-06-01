@@ -98,13 +98,14 @@ class TimeLogController extends Controller
     public function end(int $id): JsonResponse
     {
         try {
-            $log = $this->timeLogService->endLog(Auth::id(), $id);
+            $log = $this->timeLogService->getUserLogs(Auth::id())->firstWhere('id', $id);
             if (!$log) {
                 return response()->json(['message' => 'Log not found'], 404);
             }
             if ($log->end_time) {
                 return response()->json(['message' => 'Log already ended'], 400);
             }
+            $log = $this->timeLogService->endLog($id);
             return response()->json(new TimeLogResource($log), 201);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error fetching log: ' . $e->getMessage()], 500);
