@@ -36,15 +36,6 @@ A RESTful API built with Laravel 12 for tracking time spent on freelance project
 
 ---
 
-📌 Design Patterns
-
-# This API uses:
-
--   Repository Pattern – For DB interaction abstraction
--   Service Layer – For business logic
--   Form Request Validation – For input sanitation
--   API Resources – For consistent output formatting
-
 # 🛠️ Installation Guide
 
 ### ⚙️ Requirements
@@ -179,7 +170,7 @@ Includes:
 
 🧪 API Testing (Postman)
 
--   🔗 Download Postman Collection
+-   🔗 [Download Postman Collection](https://github.com/moshohel/freelance-time-tracker/blob/2f3cdc81ff0a980553d2c74420f38c7511acb4d6/postman/Freelencer%20time%20tracker.postman_collection.json)
 -   Import into Postman.
 -   Use the environment variable {{base_url}} = http://localhost:8000.
 -   Authenticate to get your token, then set Authorization header as:
@@ -193,8 +184,18 @@ Roadmap (Planned Features)
 -   Time overlap conflict detection
 -   Admin dashboard for usage analytics
 
-## Author
+🧑‍💻 Author
+Mohammad Shohel
+[LinkedIn](https://www.linkedin.com/in/mohammad-shohel-10044a2aa/) • [GitHub](https://github.com/moshohel) • [Mail](mailto:mohammadshohel866@gmail.com)
 
--   Mohammad Shohel
-    https://github.com/moshohel
-    mohammadshohel866@gmail.com
+📄 License
+This project is open-sourced under the MIT License.
+
+    Let me know if you want:
+
+    -   A downloadable `.postman_collection.json` file created.
+    -   Swagger annotations or OpenAPI YAML generated.
+    -   README translated into Bangla or for non-technical users.
+    -   Docker or CI/CD steps added.
+
+    Ready for Phase 4 or final refinements whenever you are. ✅
