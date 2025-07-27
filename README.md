@@ -12,6 +12,39 @@ A RESTful API built with Laravel 12 for tracking time spent on freelance project
 -   🛡️ Secure API with auth middleware & validation
 -   🧪 Feature Tests (PHPUnit)
 
+## 🛠️ Tech Stack
+
+| Tool              | Purpose                        |
+| ----------------- | ------------------------------ |
+| Laravel 10+       | PHP framework (main backend)   |
+| Sanctum           | Token-based API Authentication |
+| MySQL             | Relational Database            |
+| Eloquent ORM      | ActiveRecord pattern ORM       |
+| PHPUnit           | Feature & Unit testing         |
+| Laravel Factories | Test data generation           |
+| Postman           | API testing & documentation    |
+
+---
+
+## 🧱 Architectural Patterns Used
+
+-   **Repository Pattern**: Abstracts data access for maintainability.
+-   **Service Layer Pattern**: Encapsulates business logic separately from controllers.
+-   **Form Request Validation**: Handles input validation in a clean and reusable way.
+-   **API Resource Transformers**: Clean and consistent API responses.
+-   **Domain-driven Structure**: Clear separation of modules (`Clients`, `Projects`, `TimeLogs`).
+
+---
+
+📌 Design Patterns
+
+# This API uses:
+
+-   Repository Pattern – For DB interaction abstraction
+-   Service Layer – For business logic
+-   Form Request Validation – For input sanitation
+-   API Resources – For consistent output formatting
+
 # 🛠️ Installation Guide
 
 ### ⚙️ Requirements
@@ -132,6 +165,33 @@ Time Logs
 Example:
 
     GET /api/report?from=2020-05-20&to=2026-05-24&project_id=6&client_id=6
+
+🧪 Testing
+Run Feature & Unit Tests:
+
+    php artisan test
+
+Includes:
+
+✅ User Auth Tests
+✅ Client Module Tests
+✅ Project Module Tests
+
+🧪 API Testing (Postman)
+
+-   🔗 Download Postman Collection
+-   Import into Postman.
+-   Use the environment variable {{base_url}} = http://localhost:8000.
+-   Authenticate to get your token, then set Authorization header as:
+
+    Bearer YOUR_TOKEN
+
+Roadmap (Planned Features)
+
+-   PDF Export of Report
+-   Email Notifications (e.g. weekly summary)
+-   Time overlap conflict detection
+-   Admin dashboard for usage analytics
 
 ## Author
 
